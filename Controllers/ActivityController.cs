@@ -16,6 +16,12 @@ namespace Shawpnojatra_Foundation.Controllers
 		{
 			_service = service;
 		}
+
+		public IActionResult Index()
+        {
+			return View();
+        }
+
 		[HttpGet]
 		[Route("[action]")]
 		[Route("api/Activity/GetPost")]
@@ -37,7 +43,7 @@ namespace Shawpnojatra_Foundation.Controllers
 		[Route("[action]")]
 		[Route("api/Activity/AddPost")]
 
-		public IActionResult AddPost(VMPost model)
+		public IActionResult AddPost([FromBody]VMPost model)
 		{
 			var ID = _service.AddPost(model);
 			if (ID > 0)
