@@ -10,6 +10,7 @@ namespace Shawpnojatra_Foundation.Models
 		public string PostDetail { get; set; }
 
 		public string Image { get; set; }
+		public string Title { get; set; }
 
 		public int TypeID { get; set; }
 	}
