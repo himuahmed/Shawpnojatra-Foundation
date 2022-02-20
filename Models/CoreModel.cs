@@ -13,5 +13,7 @@ namespace Shawpnojatra_Foundation.Models
 
 		public DateTime CD { get; set; }
 		public DateTime UD { get; set; }
+
+		public bool Active { get; set; } = true;
 	}
 }

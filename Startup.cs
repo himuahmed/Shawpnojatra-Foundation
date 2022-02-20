@@ -6,6 +6,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Shawpnojatra_Foundation.Models;
+using Shawpnojatra_Foundation.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,6 +30,7 @@ namespace Shawpnojatra_Foundation
 					  options.UseSqlServer(Configuration.GetConnectionString("sqlConnection"))
 				  );
 			services.AddControllersWithViews();
+            services.AddTransient<IActivityService, ActivityService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
