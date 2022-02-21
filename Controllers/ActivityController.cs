@@ -16,6 +16,7 @@ namespace Shawpnojatra_Foundation.Controllers
 		{
 			_service = service;
 		}
+
 		[HttpGet]
 		[Route("[action]")]
 		[Route("api/Activity/GetPost")]
