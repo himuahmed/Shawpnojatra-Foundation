@@ -1,0 +1,413 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    .sectionOne {
+        height: 93vh !important;
+        position: relative;
+        /*background-color: yellow;*/
+        background-color: orangered;
+    }
+
+    .sectionTwo {
+        height: 70vh !important;
+        position: relative;
+        background-color: orangered;
+    }
+
+    .sectionThree {
+        height: 50vh !important;
+        position: relative;
+        /*background-color: slategrey;*/
+        background-color: orangered;
+    }
+
+    .sectionFour {
+        height: 50vh !important;
+        position: relative;
+        background-color: dimgrey;
+    }
+    /*
+    .owl-wrapper-outer {
+        height: 100vh !important;
+    }
+
+    .owl-wrapper {
+        height: 100vh;
+    }
+
+    .owl-item {
+        height: 100vh;
+    }
+
+    .b-Amarelo {
+        height: 100vh;
+    }
+
+    .owl-item h1 {
+        margin: 0;
+    }
+
+    .carousel-container {
+        width: 100vw;
+        height: 100vh;
+    }*/
+    #owl-demo .item {
+        color: #FFF;
+        -webkit-border-radius: 3px;
+        -moz-border-radius: 3px;
+        border-radius: 3px;
+        text-align: center;
+        height: 92vh;
+    }
+
+        #owl-demo .item img {
+            display: block;
+            width: 100vw !important;
+            height: 92vh;
+        }
+
+    .owl-carousel div h2, .owl-carousel div .textoverlay {
+        position: absolute;
+        color: darkred;
+        font-size: 12px;
+        display: block;
+    }
+
+    .mt-10 {
+        margin-top: 10px;
+    }
+
+    .width-90 {
+        min-width: 90%;
+    }
+
+    .label-bold-white {
+        font-weight: bolder;
+        color: white;
+    }
+</style>
+<link href="~/lib/OwlCarousel/dist/assets/owl.carousel.css" rel="stylesheet" />
+<link href="~/lib/OwlCarousel/dist/assets/owl.theme.default.css" rel="stylesheet" />
+<link href="~/lib/OwlCarousel/docs/assets/css/animate.css" rel="stylesheet" />
+<style>
+    body {
+        font-family: 'Nunito', sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+
+    .d-table {
+        width: 100%;
+        height: 100%;
+        display: table;
+    }
+
+    .d-tablecell {
+        display: table-cell;
+        vertical-align: middle;
+    }
+
+    .custom-btn1 {
+        background-color: #ff3547;
+        color: #fff;
+        border: 1px solid #ff3547;
+        display: inline-block;
+        padding: 12px 30px;
+        text-transform: uppercase;
+        border-radius: 30px;
+        text-decoration: none;
+    }
+
+        .custom-btn1:hover {
+            background-color: transparent;
+            text-decoration: none;
+            color: #fff;
+        }
+
+    .hero-slider {
+        position: relative;
+    }
+
+    .single-hs-item {
+        height: 93vh;
+        background-size: cover;
+        background-position: center center;
+        position: relative;
+    }
+
+        .single-hs-item:before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            left: 0;
+            top: 0;
+            background-color: #000;
+            opacity: .6;
+        }
+
+    .item-bg1 {
+        background-image: url(https://source.unsplash.com/random/1600x900);
+    }
+
+    .item-bg2 {
+        /*background-image: url();*/
+        background-image: url(https://source.unsplash.com/user/erondu/1600x900);
+    }
+
+    .item-bg3 {
+        background-image: url(https://source.unsplash.com/user/davidkovalenkoo/1600x900);
+    }
+
+    .hero-text {
+        padding: 0 15px;
+        text-align: center;
+        max-width: 1140px;
+        margin-left: auto;
+        margin-right: auto;
+        position: relative;
+    }
+
+        .hero-text h1 {
+            color: #fff;
+            font-size: 50px;
+            text-transform: capitalize;
+            font-weight: 600;
+            margin: 0;
+        }
+
+        .hero-text p {
+            color: #fff;
+            font-size: 17px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 30px;
+            margin-top: 20px;
+            margin-bottom: 35px;
+        }
+
+    .hero-slider .owl-item.active h1 {
+        animation: 1s .3s fadeInUp both;
+    }
+
+    .hero-slider .owl-item.active p {
+        -webkit-animation: 1s .3s fadeInUp both;
+        animation: 1s .3s fadeInUp both;
+    }
+
+    .hero-slider .owl-item.active .slider-btn {
+        -webkit-animation: 1s .3s fadeInUp both;
+        animation: 1s .3s fadeInUp both;
+    }
+
+    .owl-carousel .owl-nav button.owl-prev {
+        background-color: #ff3547;
+        position: absolute;
+        left: 0;
+        top: 50%;
+        color: #fff;
+        font-size: 30px;
+        margin: -40px 0 0;
+        border-radius: 0;
+        height: 50px;
+        width: 50px;
+    }
+
+    .owl-carousel .owl-nav button.owl-next {
+        background-color: #ff3547;
+        position: absolute;
+        right: 0;
+        top: 50%;
+        color: #fff;
+        font-size: 30px;
+        margin: -40px 0 0;
+        border-radius: 0;
+        height: 50px;
+        width: 50px;
+    }
+
+    .owl-theme .owl-nav {
+        margin-top: 0;
+    }
+
+    .owl-dots {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 20px;
+    }
+
+    .owl-theme .owl-dots .owl-dot span {
+        width: 11px;
+        height: 11px;
+    }
+
+    .owl-theme .owl-dots .owl-dot.active span, .owl-theme .owl-dots .owl-dot:hover span {
+        background: #ff3547;
+    }
+
+    @@media only screen and (max-width: 600px) {
+        .single-hs-item {
+            height: 550px;
+        }
+
+        .hero-text h1 {
+            font-size: 30px;
+        }
+
+        .hero-text p {
+            font-size: 15px;
+            margin-bottom: 25px;
+        }
+
+        .owl-carousel .owl-nav button.owl-next {
+            top: auto;
+            margin: 0;
+            bottom: 0px;
+        }
+
+        .owl-carousel .owl-nav button.owl-prev {
+            top: auto;
+            margin: 0;
+            bottom: 0px;
+        }
+
+        .owl-dots {
+            bottom: 10px;
+            left: 50px;
+            right: 50px;
+        }
+    }
+</style>
+<div>
+    <section id="sectionOne" onclick="openCarousel()" class="sectionOne et-slide">
+        @*<div id="owl-demo" class="owl-carousel owl-theme">
+                    <div class="item"><img src="~/uploads/Post-20-2-20228..JPG" /></div>
+                    <div class="item"><img src="~/uploads/Post-20-2-20229..JPG" /></div>
+                    <div class="item"><img src="~/uploads/Post-20-2-20229..JPG" /></div>
+                    <div class="item"><img src="~/uploads/Post-20-2-20229..JPG" /></div>
+                    <div class="item"><img src="~/uploads/Post-20-2-20228..JPG" /></div>
+                    <div class="item"><img src="~/uploads/Post-20-2-20229..JPG" /></div>
+                    <div class="item"><img src="~/uploads/Post-20-2-20228..JPG" /></div>
+                    <div class="item"><img src="~/uploads/Post-20-2-20229..JPG" /></div>
+            </div>*@
+        <!-- Hero Slider -->
+        <div id="home" class="hero-slider owl-carousel owl-theme">
+            <div class="single-hs-item item-bg1">
+                <div class="d-table">
+                    <div class="d-tablecell">
+                        <div class="hero-text">
+                            <h1>Post One</h1>
+                            <p>Post One details are showing here</p>
+                            <div class="slider-btn">
+                                <a href="#" class="custom-btn1">Read More</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="single-hs-item item-bg2">
+                <div class="d-table">
+                    <div class="d-tablecell">
+                        <div class="hero-text">
+                            <h1>Post Two</h1>
+                            <p>Post One details are showing here</p>
+                            <div class="slider-btn">
+                                <a href="#" class="custom-btn1 mr-30">Read More</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="single-hs-item item-bg3">
+                <div class="d-table">
+                    <div class="d-tablecell">
+                        <div class="hero-text">
+                            <h1>কোন কথাটি কাজে লাগবে</h1>
+                            <p>অর্থহীনতা আর অর্থদ্যোতনার সেই ঈর্ষাকাতর মোহাবিষ্টতা তাই তৈরি করে নাও নিজের মাঝে- চাই একটুখানি ঔৎসুক্য। নিজেই ঠিক করো, নিজের ভাষাটা কি অর্থহীন, নাকি কিছু সত্যিই বলছে!</p>
+                            <div class="slider-btn">
+                                <a href="#" class="custom-btn1 mr-30">Read More</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Hero Slider -->
+
+
+    </section>
+    <section id="sectionTwo" class="sectionTwo et-slide">
+        <div class="conyainer-fluid width-90">
+            <hr />
+            <div class="form-group">
+                <div class="form-row">
+                    <div class="col-md-3 row">
+                        <label class="label-bold-white" for="personName">Name</label>
+                        <input type="text" class="form-control" id="personName" name="personName">
+                    </div>
+                </div>
+                <div class="form-row mt-10">
+                    <div class="col-md-3 row">
+                        <label class="label-bold-white" for="contact">Contact Info</label>
+                        <input type="text" class="form-control" id="contact" name="contact">
+                    </div>
+                </div>
+                <div class="form-row mt-10">
+                    <div class="col-md-9 row">
+                        <label class="label-bold-white" for="message">Message</label>
+                        <textarea type="text" class="form-control" id="message" name="message" rows="10" required></textarea>
+                    </div>
+                </div>
+                <div class="form-row mt-10">
+                    <button class="btn btn-primary" onclick="sendMessage()">Send</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="sectionThree" class="sectionThree et-slide">
+        <h1> Section three</h1>
+    </section>
+    <section id="sectionFour" class="sectionFour">
+    </section>
+
+</div>
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script src="~/lib/OwlCarousel/dist/owl.carousel.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+
+
+
+    });
+
+    function openCarousel() {
+        $("#owl-demo").owlCarousel({
+            items: 1,
+            navigation: true,
+            slideSpeed: 300,
+            paginationSpeed: 400,
+            singleItem: true
+
+        });
+    }
+
+    function sendMessage() {
+        alert("Message Sent.")
+    }
+    $('.hero-slider').owlCarousel({
+        animateOut: 'slideOutDown',
+        animateIn: 'heartBeat',
+        items: 1,
+        loop: false,
+        nav: true,
+        dots: true,
+    })
+</script>
+
+

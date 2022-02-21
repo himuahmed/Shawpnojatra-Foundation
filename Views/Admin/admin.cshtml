@@ -1,0 +1,103 @@
+﻿
+@{
+    ViewData["Title"] = "Admin";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    .sectionOne {
+        height: 93vh !important;
+        position: relative;
+        background-color: #f8f8f8;
+    }
+
+    .sectionTwo {
+        height: 70vh !important;
+        position: relative;
+        background-color: darkgreen;
+    }
+
+    .sectionThree {
+        height: 50vh !important;
+        position: relative;
+        background-color: slategrey;
+    }
+
+    .sectionFour {
+        height: 50vh !important;
+        position: relative;
+        background-color: dimgrey;
+    }
+    .mt-10{
+        margin-top:10px;
+    }
+
+    input[type="file"] {
+        display: none;
+    }
+    label {
+        font-weight: bold;
+    }
+    .imgUploadField {
+        display: inline-block;
+        cursor: pointer;
+        border-radius: 0.3rem;
+        color: aliceblue;
+        background-color: #16aaff;
+        padding: 0.5rem 1rem;
+        border: none !important;
+    }
+</style>
+
+<section id="sectionOne" class="sectionOne et-slide">
+    <div class="container">
+        <div class="card">
+            <div class="card-body p-5">
+                <div class="form-group">
+                    <div class="form-row">
+                        <div class="col-md-8 row">
+                            <label for="postTitle">Post Title:</label>
+                            <input type="text" class="form-control" id="postTitle" name="postTitle">
+                        </div>
+                    </div>
+                    <div class="form-row mt-10">
+                        <div class="col-md-12 row">
+                            <label for="postTitle">Post Body:</label>
+                            <textarea type="text" class="form-control" id="postBody" name="postBody" rows="10"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-row mt-10">
+                        <div class="col-md-4 row">
+                            <label class="imgUploadField mt-10 mr-10">                           
+                                <input #fileInput type="file" id="postImage" name="postImage">
+                                <i class="fas fa-cloud-upload-alt"></i> Upload Image
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-row mt-10">
+                        <button class="btn btn-primary" onclick="savePost()">Save</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script>
+    function savePost() {
+        var postData = {};
+        postData.PostDetail = $("#postBody").val();
+        postData.Title = $("#postTitle").val();
+        $.ajax({
+            url: "api/Activity/AddPost",
+            type: 'POST',
+            contentType: "application/json; charset=utf-8",
+            dataType: 'json',
+            data: JSON.stringify(postData),
+            success: function (data) {
+                alert("Employee Info updated.");
+            },
+            error: function (xhr, ajaxOption, thorwnError) {
+            }
+        });
+    }
+</script>
