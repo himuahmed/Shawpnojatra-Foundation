@@ -84,19 +84,24 @@
 </section>
 <script>
     function savePost() {
-        var postData = {};
-        postData.PostDetail = $("#postBody").val();
-        postData.Title = $("#postTitle").val();
+        if (!$("#postBody").val() || !$("#postTitle").val() || !$('#postImage')[0].files[0]) {
+            alert("Missing field");
+            return;
+        }
+      var model = new FormData();
+        model.append("PostDetail", $("#postBody").val());
+        model.append("Title", $("#postTitle").val());
+        model.append('ImageFile', $('#postImage')[0].files[0]);
         $.ajax({
-            url: "api/Activity/AddPost",
-            type: 'POST',
-            contentType: "application/json; charset=utf-8",
-            dataType: 'json',
-            data: JSON.stringify(postData),
-            success: function (data) {
-                alert("Employee Info updated.");
-            },
-            error: function (xhr, ajaxOption, thorwnError) {
+            url: 'api/Activity/AddPost',
+            method: 'post',
+            data: model,
+            processData: false,
+            contentType: false,
+            cache: false,          
+            enctype: 'multipart/form-data',          
+            success: function (response) {
+                alert("SAVE")
             }
         });
     }

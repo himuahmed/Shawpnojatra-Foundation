@@ -43,7 +43,7 @@ namespace Shawpnojatra_Foundation.Controllers
 		[Route("[action]")]
 		[Route("api/Activity/AddPost")]
 
-		public IActionResult AddPost([FromBody]VMPost model)
+		public IActionResult AddPost([FromForm]VMPost model)
 		{
 			var ID = _service.AddPost(model);
 			if (ID > 0)
