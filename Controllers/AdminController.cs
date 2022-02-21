@@ -12,5 +12,10 @@ namespace Shawpnojatra_Foundation.Controllers
         {
             return View("admin");
         }
+
+        public IActionResult Message()
+        {
+            return View("messages");
+        }
     }
 }

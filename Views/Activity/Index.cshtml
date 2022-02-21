@@ -343,9 +343,9 @@
 
     </section>
     <section id="sectionTwo" class="sectionTwo et-slide">
-        <div class="conyainer-fluid width-90">
+        <div class="conyainer-fluid">
             <hr />
-            <div class="form-group">
+            <div class="form-group" style="margin: 2rem;">
                 <div class="form-row">
                     <div class="col-md-3 row">
                         <label class="label-bold-white" for="personName">Name</label>
@@ -396,10 +396,6 @@
 
         });
     }
-
-    function sendMessage() {
-        alert("Message Sent.")
-    }
     $('.hero-slider').owlCarousel({
         animateOut: 'slideOutDown',
         animateIn: 'heartBeat',
@@ -408,6 +404,33 @@
         nav: true,
         dots: true,
     })
+    function sendMessage() {
+        if (!$("#message").val()) {
+            alert("Message cant be empty.");
+            return;
+        }
+        var message = new FormData();
+        message.append("Text", $("#message").val());
+        message.append("ContactPerson", $("#personName").val());
+        message.append("ContactNumber", $("#contact").val());
+        $.ajax({
+            url: 'api/Activity/AddMessage',
+            method: 'post',
+            data: message,
+            processData: false,
+            contentType: false,
+            cache: false,
+            enctype: 'multipart/form-data',
+            success: function (response) {
+                alert("Message Sent");
+            }
+        });
+    }
+
+
+    
+
+
 </script>
 
 

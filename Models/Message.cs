@@ -8,7 +8,6 @@ namespace Shawpnojatra_Foundation.Models
 	public class Message:CoreModel
 	{
 		public string Text { get; set; }
-
 		public string Image { get; set; }
 		public string ContactPerson { get; set; }
 		public string ContactNumber { get; set; }

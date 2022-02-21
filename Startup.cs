@@ -31,6 +31,7 @@ namespace Shawpnojatra_Foundation
 				  );
 			services.AddControllersWithViews();
             services.AddTransient<IActivityService, ActivityService>();
+            services.AddScoped<IMessageService, MessageService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

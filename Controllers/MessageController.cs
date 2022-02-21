@@ -40,7 +40,7 @@ namespace Shawpnojatra_Foundation.Controllers
 		[Route("[action]")]
 		[Route("api/Activity/AddMessage")]
 
-		public IActionResult AddMessage(Message message)
+		public IActionResult AddMessage([FromForm] Message message)
 		{
 			var ID = _service.AddMessage(message);
 			if (ID > 0)

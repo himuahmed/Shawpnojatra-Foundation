@@ -1,0 +1,52 @@
+﻿
+@{
+    ViewData["Title"] = "Messages";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link href="~/lib/bootstrap-table/bootstrap-table.css" rel="stylesheet" />
+<style>
+    .main {
+        height: 93vh;
+        background: #f2f2f2;
+    }
+</style>
+<div class="container-fluid main">
+    <div class="row">
+        <div class="card col-md-12">
+            <div class="card-body">
+                <table id="table"
+                       data-toggle="table"
+                       data-height="460"
+                       data-ajax="getMessages"
+                       data-search="true"
+                       data-side-pagination="server"
+                       data-pagination="true">
+                    <thead>
+                        <tr>
+                            <th data-field="id">ID</th>
+                            <th data-field="contactPerson">Sender</th>
+                            <th data-field="contactNumber">Contact</th>
+                            <th data-field="text">Message</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="~/lib/bootstrap-table/bootstrap-table.js"></script>
+<script>
+    $(document).ready(function () {
+        //getMessages();
+    });
+    function getMessages(params) {
+        var url = '../api/Activity/GetMessages'
+        $.get(url + '?' + $.param(params.data)).then(function (res) {
+            params.success(res)
+        })
+    }
+</script>
