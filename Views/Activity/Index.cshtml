@@ -13,17 +13,17 @@
     }
 
     .sectionTwo {
-        height: 70vh !important;
+        height: 90vh !important;
         position: relative;
         background-color: orangered;
     }
 
-    .sectionThree {
-        height: 50vh !important;
-        position: relative;
-        /*background-color: slategrey;*/
-        background-color: orangered;
-    }
+	.sectionThree {
+		height: 100vh !important;
+		position: relative;
+		/*background-color: slategrey;*/
+		background-color: aliceblue;
+	}
 
     .sectionFour {
         height: 50vh !important;
@@ -343,18 +343,19 @@
 
     </section>
     <section id="sectionTwo" class="sectionTwo et-slide">
-        <div class="conyainer-fluid">
+
+        <div class="container-fluid">
             <hr />
             <div class="form-group" style="margin: 2rem;">
                 <div class="form-row">
                     <div class="col-md-3 row">
-                        <label class="label-bold-white" for="personName">Name</label>
+                        <label class="label-bold-white" for="personName">Name<span style="font-size:10px;margin-bottom:5px">  [Optional]</span></label>
                         <input type="text" class="form-control" id="personName" name="personName">
                     </div>
                 </div>
                 <div class="form-row mt-10">
                     <div class="col-md-3 row">
-                        <label class="label-bold-white" for="contact">Contact Info</label>
+                        <label class="label-bold-white" for="contact">Contact Info <span style="font-size:10px;margin-bottom:5px">  [Optional]</span></label>
                         <input type="text" class="form-control" id="contact" name="contact">
                     </div>
                 </div>
@@ -370,11 +371,121 @@
             </div>
         </div>
     </section>
-    <section id="sectionThree" class="sectionThree et-slide">
+    @*<section id="sectionThree" class="sectionThree et-slide">
         <h1> <img src="~/uploads/Post-21-2-20222..jpg" /></h1>
-    </section>
-    <section id="sectionFour" class="sectionFour">
-    </section>
+    </section>*@
+<section id="sectionThree" class="sectionThree">
+	<div class="container-fluid">
+		<div class="tab-content">
+
+			<div class="list-group">
+
+				<a href="#" class="list-group-item">
+					<div class="checkbox">
+						<label>
+							<input type="checkbox">
+						</label>
+					</div>
+					<span class="glyphicon glyphicon-star-empty"></span>
+					<span class="name" style="min-width: 120px; display: inline-block;">Varun Singh</span>
+					<span class="">You have uploaded 2 files</span>
+					<span class="text-muted" style="font-size: 11px;">
+						- The files will be available for a limited time only unless
+						you are a sendspace Premium member.
+					</span>
+					<span class="badge">12:10 AM</span>
+					<span class="pull-right">
+						<span class="glyphicon glyphicon-paperclip">
+						</span>
+					</span>
+				</a>
+
+				<a href="#" class="list-group-item">
+					<div class="checkbox">
+						<label>
+							<input type="checkbox">
+						</label>
+					</div>
+					<span class="glyphicon glyphicon-star"></span>
+					<span class="name" style="min-width: 120px; display: inline-block;">Varun Singh</span>
+					<span class="">You have uploaded 2 files</span>
+					<span class="text-muted" style="font-size: 11px;">
+						- The files will be available for a limited time only unless
+						you are a sendspace Premium member.
+					</span>
+					<span class="badge">12:10 AM</span>
+					<span class="pull-right">
+						<span class="glyphicon glyphicon-paperclip">
+						</span>
+					</span>
+				</a>
+
+				<a href="#" class="list-group-item">
+					<div class="checkbox">
+						<label>
+							<input type="checkbox">
+						</label>
+					</div>
+					<span class="glyphicon glyphicon-star-empty"></span>
+					<span class="name" style="min-width: 120px; display: inline-block;">Varun Singh</span>
+					<span class="">You have uploaded 2 files</span>
+					<span class="text-muted" style="font-size: 11px;">
+						- The files will be available for a limited time only unless
+						you are a sendspace Premium member.
+					</span>
+					<span class="badge">12:10 AM</span>
+					<span class="pull-right">
+						<span class="glyphicon glyphicon-paperclip">
+						</span>
+					</span>
+				</a>
+
+				<a href="#" class="list-group-item">
+					<div class="checkbox">
+						<label>
+							<input type="checkbox">
+						</label>
+					</div>
+					<span class="glyphicon glyphicon-star"></span>
+					<span class="name" style="min-width: 120px; display: inline-block;">Varun Singh</span>
+					<span class="">You have uploaded 2 files</span>
+					<span class="text-muted" style="font-size: 11px;">
+						- The files will be available for a limited time only unless
+						you are a sendspace Premium member.
+					</span>
+					<span class="badge">12:10 AM</span>
+					<span class="pull-right">
+						<span class="glyphicon glyphicon-paperclip">
+						</span>
+					</span>
+				</a>
+
+				<a href="#" class="list-group-item">
+					<div class="checkbox">
+						<label>
+							<input type="checkbox">
+						</label>
+					</div>
+					<span class="glyphicon glyphicon-star"></span>
+					<span class="name" style="min-width: 120px; display: inline-block;">Varun Singh</span>
+					<span class="">You have uploaded 2 files</span>
+					<span class="text-muted" style="font-size: 11px;">
+						- The files will be available for a limited time only unless
+						you are a sendspace Premium member.
+					</span>
+					<span class="badge">12:10 AM</span>
+					<span class="pull-right">
+						<span class="glyphicon glyphicon-paperclip">
+						</span>
+					</span>
+				</a>
+
+			</div>
+
+
+		</div>
+	</div>
+</section>
 
 </div>
 <script src="~/lib/jquery/dist/jquery.js"></script>

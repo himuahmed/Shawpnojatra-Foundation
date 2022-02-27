@@ -11,8 +11,8 @@ namespace Shawpnojatra_Foundation.Models
 		public int ID { get; set; }
 		public int UserID { get; set; }
 
-		public DateTime CD { get; set; }
-		public DateTime UD { get; set; }
+		public DateTime CD { get; set; } = DateTime.Now;
+		public DateTime UD { get; set; } = DateTime.Now;
 
 		public bool Active { get; set; } = true;
 	}

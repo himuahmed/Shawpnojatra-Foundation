@@ -11,42 +11,82 @@
     }
 </style>
 <div class="container-fluid main">
-    <div class="row">
-        <div class="card col-md-12">
-            <div class="card-body">
-                <table id="table"
-                       data-toggle="table"
-                       data-height="460"
-                       data-ajax="getMessages"
-                       data-search="true"
-                       data-side-pagination="server"
-                       data-pagination="true">
-                    <thead>
-                        <tr>
-                            <th data-field="id">ID</th>
-                            <th data-field="contactPerson">Sender</th>
-                            <th data-field="contactNumber">Contact</th>
-                            <th data-field="text">Message</th>
-                        </tr>
-                    </thead>
-                </table>
-            </div>
-        </div>
-    </div>
-</div>
+	<section class="content-header">
+		
+		<ol class="breadcrumb">
+			<li><a href="~/Admin/Message"><i class="fa fa-dashboard"></i>Messages</a></li>
+			@*<li class="active">Area</li>*@
+		</ol>
+	</section>
 
+	<div class="row">
+		<div class="card col-md-12">
+			<div class="card-body">
+				<table id="table"
+					   data-toggle="table"
+					   data-height="460"
+					   data-ajax="getMessages"
+					   data-search="true"
+					   data-side-pagination="server"
+					   data-pagination="true">
+					<thead>
+						@*<tr>
+								<th data-field="id">ID</th>
+								<th data-field="contactPerson">Sender</th>
+								<th data-field="contactNumber">Contact</th>
+								<th data-field="text">Message</th>
+							</tr>*@
+					</thead>
+
+			
+				</table>
+			</div>
+		</div>
+	</div>
+</div>
+@section scripts{ 
 <script src="~/lib/jquery/dist/jquery.js"></script>
 <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 <script src="~/lib/bootstrap-table/bootstrap-table.js"></script>
+
 <script>
     $(document).ready(function () {
-        //getMessages();
-    });
+		getMessages();
+	});
+	
     function getMessages(params) {
         var url = '../api/Activity/GetMessages'
-        $.get(url + '?' + $.param(params.data)).then(function (res) {
-            params.success(res)
-        })
+		$.get(url).then(function (res) {
+
+			var table = document.getElementById('table');
+
+			for (var i = 0; i < res.length; i++) {
+				var row = `<tr>
+                            <td><a href="#" class="list-group-item">
+
+									<span class="glyphicon glyphicon-star-empty"></span>
+									<span id="UserID" class="name" style="min-width: 120px; display: inline-block;">${res[i].contactPerson}</span>
+									<span class="">You have uploaded 2 files</span>
+									<span class="text-muted" style="font-size: 11px;">
+										- The files will be available for a limited time only unless
+										you are a sendspace Premium member.
+									</span>
+									<span class="badge">12:10 AM</span>
+									<span class="pull-right">
+										<span class="glyphicon glyphicon-paperclip">
+										</span>
+									</span>
+
+								</a></td>
+                          
+                      </tr>`
+				table.innerHTML += row
+			}
+				console.log(res);
+				//$('#UserID').text(res[0].contactPerson);
+				//         params.success(res)
+		});
     }
 </script>
+}
