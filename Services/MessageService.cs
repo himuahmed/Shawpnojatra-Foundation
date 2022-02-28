@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Hosting;
 using Shawpnojatra_Foundation.Models;
+using Shawpnojatra_Foundation.View_Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -50,9 +51,23 @@ namespace Shawpnojatra_Foundation.Services
 			return Entity;
 		}
 
-		public IEnumerable<Message> GetMessages()
+		public IEnumerable<VMMessage> GetMessages()
 		{
-			return _db.Messages.ToList();
+			List<VMMessage> vData = new List<VMMessage>();
+			var vD= _db.Messages.ToList();
+			foreach(var v in vD)
+			{
+				var d = new VMMessage
+				{
+					ID = v.ID,
+					ContactNumber = v.ContactNumber != null ? v.ContactNumber : "No Contact Number",
+					ContactPerson = v.ContactPerson != null ? v.ContactPerson : "Unknown",
+					Text = v.Text,
+					CDstring = v.CD.ToString("dd-MM-yyyy hh:mm:ss"),
+				};
+				vData.Add(d);
+			}
+			return vData;
 		}
 
 		public int UpdateMessage(Message message)

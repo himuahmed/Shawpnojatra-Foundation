@@ -19,23 +19,18 @@
 		</ol>
 	</section>
 
-	<div class="row">
+	<div class="row" >
 		<div class="card col-md-12">
-			<div class="card-body">
-				<table id="table"
+			<div class="card-body ">
+				<table 
 					   data-toggle="table"
 					   data-height="460"
-					   data-ajax="getMessages"
+					   @*data-ajax="getMessages"*@
 					   data-search="true"
 					   data-side-pagination="server"
 					   data-pagination="true">
-					<thead>
-						@*<tr>
-								<th data-field="id">ID</th>
-								<th data-field="contactPerson">Sender</th>
-								<th data-field="contactNumber">Contact</th>
-								<th data-field="text">Message</th>
-							</tr>*@
+					<thead id="table">
+						
 					</thead>
 
 			
@@ -65,14 +60,14 @@
 				var row = `<tr>
                             <td><a href="#" class="list-group-item">
 
-									<span class="glyphicon glyphicon-star-empty"></span>
-									<span id="UserID" class="name" style="min-width: 120px; display: inline-block;">${res[i].contactPerson}</span>
-									<span class="">You have uploaded 2 files</span>
-									<span class="text-muted" style="font-size: 11px;">
-										- The files will be available for a limited time only unless
-										you are a sendspace Premium member.
-									</span>
-									<span class="badge">12:10 AM</span>
+								
+									<span id="UserID"class="name" style="min-width: 120px; display: inline-block;" >From: ${res[i].contactPerson}</span>
+									
+									<span id="UserID" class="name" style="min-width: 120px; display: inline-block;float:right">Contact Number: ${res[i].contactNumber}</span>
+									<div class="text-muted" style="font-size: 20px;">
+										${res[i].text}
+									</div>
+									<span class="badge">${res[i].cDstring}</span>
 									<span class="pull-right">
 										<span class="glyphicon glyphicon-paperclip">
 										</span>
