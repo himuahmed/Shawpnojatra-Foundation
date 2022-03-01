@@ -1,0 +1,145 @@
+﻿@model Post
+@{
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<link href="~/lib/OwlCarousel/dist/assets/owl.carousel.css" rel="stylesheet" />
+<link href="~/lib/OwlCarousel/dist/assets/owl.theme.default.css" rel="stylesheet" />
+<link href="~/lib/OwlCarousel/docs/assets/css/animate.css" rel="stylesheet" />
+<style>
+    .sectionOne {
+        height: auto;
+        position: relative;
+        /*background-color: yellow;*/
+        background-color: white;
+    }
+
+    .title {
+        width: 100%;
+        text-align: center;
+        margin-bottom: 10px;
+        font-weight: bolder;
+        font-size: 20px;
+        align-content:center;
+    }
+
+    .postBody {
+        width: 100%;
+        text-align: center;
+    }
+    .card-image{
+        max-height:150px !important;
+    }
+
+    .card-body {
+        min-height: 250px !important;
+        max-height: 250px !important;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    .card-header{
+        padding:0px !important;
+    }
+    .card-footer{
+        text-align:center;
+    }
+    .owl-carousel .owl-item img {
+        display: block;
+        width: 100% !important;
+        max-height: 120px !important;
+        align-items: center;
+        text-align: center;
+    }
+</style>
+<div class="container-fluid">
+    <div class="sectionOne">
+        <div class="row" style="margin-top: 20px;">
+            <div class="col-md-4">
+                @{
+                    string imgUrl = "/uploads/" + Model.Image;
+                    <img style="object-fit: cover;width:100%; height:100%" src="@imgUrl" />
+                }
+            </div>
+            <div class="col-md-6" style="margin:10px;">
+                <div class="row">
+                    <div class="title">
+                        <span>@Model.Title</span>
+                    </div>
+
+                    <div class="postBody">
+                        <p>@Model.PostDetail</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr />
+        <div class="row">
+            <div class="col-md-12 mt-20" style="text-align: center;">
+                <span style=" color:red;font-size:20px;font-weight:bold;">Recent Posts</span>
+            </div>
+        </div>
+        <div class="row">
+            <div id="postList" class="owl-carousel owl-theme mt-20">
+                <div class="card" style="margin:10px;">
+                    <div class="card-header card-image"></div>
+                    <div class="card-body" >
+                        <h5 class="card-title"></h5>
+                        <p class="card-text"></p>
+                    </div>
+                    <div class="card-footer"></div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        GetPosts();
+
+    });
+
+    function GetPosts()
+    {
+
+        $.ajax({
+            url: '../api/Activity/GetPost',
+            method: 'get',
+            success: function (result) {
+
+                $(".card:first").hide();
+                var isRemoved = false;
+                $.each(result, function (index, item) {
+                    var cards = $(".card:first").clone();
+                    if (!isRemoved) {
+                        $(".card:first").remove();
+                        isRemoved = true;
+                    }
+                    var imgSrc = "/uploads/" + item.image
+                    var redUrl = "/Activity/PostDetails?id=" + item.id;
+                    var link = "<a class='cardImg' href=\"" + redUrl + "\">Read More</a>"
+                    var imgStr = "<img class='cardImg' src=\"" + imgSrc + "\" alt=\"" + item.id + "\">"
+                    var title = item.title;
+                    var body = item.postDetail;
+                    $(cards).find(".card-header").html(imgStr);
+                    $(cards).find(".card-title").html(title);
+                    $(cards).find(".card-text").html(body);
+                    $(cards).find(".card-footer").html(link);
+                    $(cards).show();
+                    $(cards).appendTo($("#postList"));
+                });
+                $('#postList').owlCarousel({
+                    items: 6,
+                    itemsDesktop: [1000, 6],
+                    itemsDesktopSmall: [900, 3],
+                    itemsTablet: [600, 2],
+                    itemsMobile: false,
+                    nav: true,
+                    dots: false,
+                    autoplay: true,
+                    autoplayTimeout: 2000,
+                    autoplayHoverPause: true
+                });
+            }
+        });
+    }
+</script>

@@ -18,9 +18,16 @@ namespace Shawpnojatra_Foundation.Controllers
 		}
 
 		public IActionResult Index()
-        {
-			return View();
+        {		
+			var postList = _service.GetPost().ToList();
+			return View(postList);
         }
+
+		public IActionResult PostDetails(int id)
+        {
+			Post post = _service.GetPostsByID(id);
+			return View(post);
+		}
 
 		[HttpGet]
 		[Route("[action]")]
