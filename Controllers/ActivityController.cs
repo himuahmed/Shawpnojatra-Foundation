@@ -19,14 +19,26 @@ namespace Shawpnojatra_Foundation.Controllers
 
 		public IActionResult Index()
         {		
-			var postList = _service.GetPost().ToList();
+			var postList = _service.GetPost().OrderBy(x=>x.CD).ToList().Take(10);
+
 			return View(postList);
         }
 
-		public IActionResult PostDetails(int id)
+		public IActionResult PostDetails(int id=-1)
         {
-			Post post = _service.GetPostsByID(id);
-			return View(post);
+			if (!string.IsNullOrWhiteSpace(id.ToString()) && id > -1)
+            {
+				Post post = _service.GetPostsByID(id);
+				return View(post);
+			}
+            else
+            {
+				Post post = _service.GetPost().OrderBy(x => x.CD).FirstOrDefault();
+				return View(post);
+			}
+
+
+			
 		}
 
 		[HttpGet]
