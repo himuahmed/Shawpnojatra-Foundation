@@ -91,9 +91,9 @@
       var model = new FormData();
         model.append("PostDetail", $("#postBody").val());
         model.append("Title", $("#postTitle").val());
-        model.append('ImageFile', $('#postImage')[0].files[0]);
+        model.append("ImageFile", $("#postImage")[0].files[0]);
         $.ajax({
-            url: 'api/Activity/AddPost',
+            url: '/api/Activity/AddPost',
             method: 'post',
             data: model,
             processData: false,
