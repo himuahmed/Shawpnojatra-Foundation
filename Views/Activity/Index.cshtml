@@ -291,7 +291,7 @@
             @foreach (var post in Model)
             {
                 string bgImage = "/uploads/" + post.Image;
-                string postDetails = (post.PostDetail.Length > 200) ? post.PostDetail.Substring(0, 200) : post.PostDetail;
+                string postDetails = (post.PostDetail.Length > 60) ? post.PostDetail.Substring(0, 60) : post.PostDetail;
                 <div class="single-hs-item" style="background-image: url(@bgImage)">
                     <div class="d-table">
                         <div class="d-tablecell">
@@ -472,9 +472,12 @@
         animateOut: 'slideOutDown',
         animateIn: 'heartBeat',
         items: 1,
-        loop: false,
+        loop: true,
         nav: true,
         dots: false,
+        autoplay: true,
+        autoplayTimeout: 4000,
+        autoplayHoverPause: true
     })
     function sendMessage() {
         if (!$("#message").val()) {
