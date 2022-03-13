@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -11,6 +12,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 namespace Shawpnojatra_Foundation
 {
@@ -26,12 +30,40 @@ namespace Shawpnojatra_Foundation
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-			services.AddDbContext<ApplicationContext>(options =>
-					  options.UseSqlServer(Configuration.GetConnectionString("sqlConnection"))
-				  );
-			services.AddControllersWithViews();
+            services.AddDbContext<ApplicationContext>(options =>
+                      options.UseSqlServer(Configuration.GetConnectionString("sqlConnection"))
+                  );
+            services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<ApplicationContext>();
+            services.AddControllersWithViews();
             services.AddTransient<IActivityService, ActivityService>();
             services.AddScoped<IMessageService, MessageService>();
+            services.AddScoped<IAuthenticationService, AuthenticationService>();
+
+            services.Configure<IdentityOptions>(option =>
+            {
+                option.Password.RequireDigit = false;
+                option.Password.RequireUppercase = false;
+                option.Password.RequiredLength = 6;
+                option.Password.RequireLowercase = false;
+                option.Password.RequireNonAlphanumeric = false;
+                option.Password.RequiredUniqueChars = 0;
+                option.SignIn.RequireConfirmedEmail = false;
+            });
+
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
+            {
+                options.RequireHttpsMetadata = false;
+                options.SaveToken = true;
+                options.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuerSigningKey = true,
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(Configuration.GetSection("AuthSetting:tokenKey").Value)),
+                    ValidateIssuer = false,
+                    ValidateAudience = false
+
+                };
+
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -53,6 +85,8 @@ namespace Shawpnojatra_Foundation
             app.UseRouting();
 
             app.UseAuthorization();
+
+            app.UseAuthentication();
 
             app.UseEndpoints(endpoints =>
             {
