@@ -1,0 +1,76 @@
+﻿@{
+    ViewData["Title"] = "Admin";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml"; 
+}
+<style>
+    .section {
+        height: 93vh !important;
+    }
+
+    .centered {
+        position: relative;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        overflow: auto;
+    }
+</style>
+
+<div class="container">
+    <div class="section">
+        <div class="card centered col-md-4">
+
+            <div class="card-body">
+                <form>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Email address</label>
+                        <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email">
+
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Password</label>
+                        <input type="password" class="form-control" id="password" placeholder="Password">
+                    </div>
+
+
+                </form>
+                <button id="signin" onclick="login()" class="btn btn-primary">Signin</button>
+                <button id="register" class="btn btn-primary">Register</button>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script>
+
+    function login() {
+        var username = $("#email").val();
+        var password = $("#password").val();
+
+        console.log(username + " " + password);
+
+        if (username && password) {
+            var model = new FormData();
+            model.append("username", $("#email").val());
+            model.append("password", $("#password").val());
+           
+            $.ajax({
+                url: '/api/Account/signin',
+                method: 'post',
+                data: model,
+                processData: false,
+                contentType: false,
+                cache: false,
+                enctype: 'multipart/form-data',
+                success: function (response) {
+                    
+                    localStorage.setItem("token", response.token);
+                    window.location.href = "/Admin"
+                }
+            });
+        }
+    }
+
+
+</script>
