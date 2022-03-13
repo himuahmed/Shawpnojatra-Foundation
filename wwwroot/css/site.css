@@ -159,7 +159,7 @@ a {
     justify-content: center;
     align-items: center;
     flex: 1;
-    min-width: 80% !important;
+    min-width: 70% !important;
     color: #000;
     letter-spacing: 0.1rem;
     transition: all 0.5s ease;
@@ -209,7 +209,7 @@ h3 {
     justify-content: center;
     align-items: center;
     flex: 1;
-    width: 20% !important;
+    width: auto !important;
     color: #000;
     letter-spacing: 0.1rem;
     transition: all 0.5s ease;

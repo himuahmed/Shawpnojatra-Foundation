@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Shawpnojatra_Foundation.Models;
 using Shawpnojatra_Foundation.Services;
 using Shawpnojatra_Foundation.View_Model;
@@ -58,6 +59,7 @@ namespace Shawpnojatra_Foundation.Controllers
 			return Json(post);
 		}
 
+		[Authorize(AuthenticationSchemes = "Bearer")]
 		[HttpPost]
 		[Route("[action]")]
 		[Route("api/Activity/AddPost")]

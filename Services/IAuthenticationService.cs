@@ -7,6 +7,7 @@ namespace Shawpnojatra_Foundation.Services
     {
         Task<IdentityResult> CreateUser(string username, string password);
         Task<IdentityUser> SignIn(string username, string password);
+        Task SignOut();
         Task<bool> UserExists(string username);
     }
 }

@@ -32,12 +32,18 @@ namespace Shawpnojatra_Foundation.Services
             {
                 return null;
             }
-            var result = await _userMgr.CheckPasswordAsync(user, password);
-            if (!result)
+            var result = await _signInManager.PasswordSignInAsync(username ,password, false, false);
+            
+            if (result.Succeeded)
             {
-                return null;
+                return user;
             }
-            return user;
+            return null;
+        }
+
+        public async Task SignOut()
+        {
+            await _signInManager.SignOutAsync();
         }
 
         public async Task<bool> UserExists(string username)

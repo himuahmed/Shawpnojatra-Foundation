@@ -9,6 +9,7 @@
   <ItemGroup>
     <None Remove="Microsoft.AspNetCore.Identity.EntityFrameworkCore" />
     <None Remove="Microsoft.AspNetCore.Authentication.JwtBearer" />
+    <None Remove="Views\Account\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="wwwroot\AdminLTE\build\config\postcss.config.js" />
@@ -2194,4 +2195,7 @@
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="3.1.23" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Views\Account\" />
+  </ItemGroup>
 </Project>

@@ -58,7 +58,7 @@ namespace Shawpnojatra_Foundation.Controllers
         [Route("[action]")]
         [Route("api/account/signin")]
 
-        public async Task<IActionResult> SignIn(string username, string password)
+        public async Task<IActionResult> SignIn([FromForm]string username, [FromForm]string password)
         {
             if(string.IsNullOrEmpty(username) || string.IsNullOrWhiteSpace(password))
             {
@@ -88,6 +88,12 @@ namespace Shawpnojatra_Foundation.Controllers
             var token = tokenHandler.CreateToken(tokenDescriptor);
 
             return Ok(new { token = tokenHandler.WriteToken(token) });
+        }
+
+        public async Task<IActionResult> LogOut()
+        {
+            await _authenticationService.SignOut();
+            return RedirectToAction("Index", "Activity");
         }
 
     }
