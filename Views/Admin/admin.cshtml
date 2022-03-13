@@ -96,6 +96,9 @@
             url: '/api/Activity/AddPost',
             method: 'post',
             data: model,
+            headers: {
+                'Authorization': 'Bearer ' + localStorage.getItem("token")
+            },
             processData: false,
             contentType: false,
             cache: false,          

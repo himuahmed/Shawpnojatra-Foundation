@@ -15,6 +15,8 @@
         <div class="et-hero-tabs-container">
             <div class="et-hero-tab-disabled"></div>
             <a class="et-hero-tab" asp-area="" asp-controller="Activity" asp-action="Index">Home</a>
+            <a class="et-hero-tab" asp-area="" asp-controller="Admin" asp-action="Message">Messages</a>
+            <a class="et-hero-tab" id="logout" onclick="logout()" asp-action="Logout" asp-controller="Account">Logout</a>
             <span class="et-hero-tab-slider"></span>
         </div>
     </section>
@@ -30,4 +32,17 @@
     @RenderSection("Scripts", required: false)
 </body>
 </html>
+
+<script>
+    $(document).ready(function () {
+        if (!localStorage.getItem("token")) {
+            $("#logout").hide();
+        }
+    });
+
+    function logout() {
+        localStorage.removeItem("token");
+        $("#logout").hide();
+    }
+</script>
 @*Himus Section*@
