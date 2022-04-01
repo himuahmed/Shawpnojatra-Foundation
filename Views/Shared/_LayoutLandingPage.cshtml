@@ -1,0 +1,40 @@
+﻿@*Himus Section*@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Shawpnojatra_Foundation</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link href="~/lib/OwlCarousel/dist/assets/owl.carousel.css" rel="stylesheet" />
+    <link href="~/lib/OwlCarousel/dist/assets/owl.theme.default.css" rel="stylesheet" />
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+    <section class="et-hero-tabs">
+        <div class="et-hero-tabs-container">
+            <div class="et-hero-tab-disabled"></div>
+            <a class="et-hero-tab " href="#sectionOne">Home</a>
+            <a class="link-tab" asp-area="" asp-controller="Activity" asp-action="PostDetails">All Post</a>
+            <a class="et-hero-tab" href="#sectionTwo">Message Us</a>
+            <a class="et-hero-tab" href="#sectionThree">About</a>
+            <a class="link-tab" asp-area="" asp-controller="Admin" asp-action="Index">Admin</a>
+            <span class="et-hero-tab-slider"></span>
+        </div>
+    </section>
+    <main role="main" class="et-main">
+        @RenderBody()
+    </main>
+    <footer class="border-top footer text-muted" style="height:50px;position:relative">
+        <div class="container">
+            &copy; 2022 - Shawpnojatra_Foundation - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+    <script src="~/lib/OwlCarousel/dist/owl.carousel.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>
+@*Himus Section*@
