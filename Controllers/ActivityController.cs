@@ -77,5 +77,37 @@ namespace Shawpnojatra_Foundation.Controllers
 			}
 		}
 
+		[Authorize(AuthenticationSchemes = "Bearer")]
+		[HttpPost]
+		[Route("[action]")]
+		[Route("api/Activity/AddWebSite")]
+
+		public IActionResult AddWebSite([FromForm] VMWebLink model)
+		{
+			var ID = _service.AddWeSite(model);
+			if (ID > 0)
+			{
+				return Ok();
+			}
+			else
+			{
+				return BadRequest();
+			}
+		}
+
+		[HttpGet]
+		[Route("[action]")]
+		[Route("api/Activity/GetWebSites")]
+		public JsonResult GetWebSites()
+		{
+			var websites = _service.GetWebSites();
+			return Json(websites);
+		}
+
+		public IActionResult WebSites()
+		{
+			return View();
+		}
+
 	}
 }

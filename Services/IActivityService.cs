@@ -15,7 +15,8 @@ namespace Shawpnojatra_Foundation.Services
 
 		int UpdatePost(VMPost post);
 		int DeletePost(int ID);
-
+		int AddWeSite(VMWebLink model);
+		IEnumerable<VMWebLink> GetWebSites();
 
 
 	}

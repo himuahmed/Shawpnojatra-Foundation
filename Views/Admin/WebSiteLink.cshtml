@@ -1,0 +1,108 @@
+﻿
+@{
+	ViewData["Title"] = "Web Site Link";
+	Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<style>
+	.sectionOne {
+		height: 93vh !important;
+		position: relative;
+		background-color: #f8f8f8;
+	}
+
+	.sectionTwo {
+		height: 70vh !important;
+		position: relative;
+		background-color: darkgreen;
+	}
+
+	.sectionThree {
+		height: 50vh !important;
+		position: relative;
+		background-color: slategrey;
+	}
+
+	.sectionFour {
+		height: 50vh !important;
+		position: relative;
+		background-color: dimgrey;
+	}
+
+	.mt-10 {
+		margin-top: 10px;
+	}
+
+	input[type="file"] {
+		display: none;
+	}
+
+	label {
+		font-weight: bold;
+	}
+
+	.imgUploadField {
+		display: inline-block;
+		cursor: pointer;
+		border-radius: 0.3rem;
+		color: aliceblue;
+		background-color: #16aaff;
+		padding: 0.5rem 1rem;
+		border: none !important;
+	}
+</style>
+
+<section id="sectionOne" class="sectionOne et-slide">
+	<div class="container">
+		<div class="card">
+			<div class="card-body p-5">
+				<div class="form-group">
+					<div class="form-row">
+						<div class="col-md-8 row">
+							<label for="postTitle">Heading:</label>
+							<input type="text" class="form-control" id="postTitle" name="postTitle">
+						</div>
+					</div>
+					<div class="form-row mt-10">
+						<div class="col-md-12 row">
+							<label for="postTitle">Link:</label>
+							<input type="text" class="form-control" id="postBody" name="postBody" >
+						</div>
+					</div>
+					
+					<div class="form-row mt-10">
+						<button class="btn btn-primary" onclick="savePost()">Save</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<script>
+    function savePost() {
+        if (!$("#postBody").val() || !$("#postTitle").val()) {
+            alert("Missing field");
+            return;
+        }
+      var model = new FormData();
+		model.append("WebStieLink", $("#postBody").val());
+		model.append("Heading", $("#postTitle").val());
+       
+        $.ajax({
+			url: '/api/Activity/AddWebSite',
+            method: 'post',
+            data: model,
+            headers: {
+                'Authorization': 'Bearer ' + localStorage.getItem("token")
+            },
+            processData: false,
+            contentType: false,
+            cache: false,
+            enctype: 'multipart/form-data',
+            success: function (response) {
+                alert("SAVE")
+            }
+        });
+    }
+</script>
+

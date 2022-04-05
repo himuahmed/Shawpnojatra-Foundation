@@ -17,5 +17,10 @@ namespace Shawpnojatra_Foundation.Controllers
         {
             return View("messages");
         }
+
+        public IActionResult WebSiteLink()
+		{
+            return View();
+		}
     }
 }

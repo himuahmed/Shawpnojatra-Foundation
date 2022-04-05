@@ -131,5 +131,41 @@ namespace Shawpnojatra_Foundation.Services
 
 			return fileName;
 		}
+
+		public int AddWeSite(VMWebLink model)
+		{
+			int result = -1;
+			if (model != null)
+			{
+				WebLink vPost = new WebLink
+				{
+					Heading = model.Heading,
+					WebStieLink = model.WebStieLink,
+					
+					CD = DateTime.Now,
+					UD = DateTime.Now,
+				};
+				_db.WebLinks.Add(vPost);
+				if (_db.SaveChanges() > 0)
+				{
+					result = vPost.ID;
+				}
+				
+			}
+
+			return result;
+		}
+
+		public IEnumerable<VMWebLink> GetWebSites()
+		{
+			var websites = (from t1 in _db.WebLinks.Where(x => x.Active == true)
+							select new VMWebLink
+							{
+								ID = t1.ID,
+								Heading = t1.Heading,
+								WebStieLink = t1.WebStieLink
+							}).ToList();
+			return websites;
+		}
 	}
 }
