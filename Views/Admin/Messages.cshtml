@@ -62,10 +62,14 @@
                             <td><a href="#" class="list-group-item">
 
 								
+									
 									<span id="UserID"class="name" style="min-width: 120px; display: inline-block;" >From: ${res[i].contactPerson}</span>
 									
 									<span id="UserID" class="name" style="min-width: 120px; display: inline-block;float:right">Contact Number: ${res[i].contactNumber}</span>
-									<div class="text-muted" style="font-size: 20px;">
+									<div class="text-muted" style="font-size: 10px;">
+										${res[i].typeString}
+									</div>
+<div class="text-muted" style="font-size: 20px;">
 										${res[i].text}
 									</div>
 									<span class="badge">${res[i].cDstring}</span>

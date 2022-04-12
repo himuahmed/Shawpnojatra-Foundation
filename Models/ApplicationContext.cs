@@ -16,5 +16,6 @@ namespace Shawpnojatra_Foundation.Models
 		public DbSet<Post> Posts { get; set; }
 		public DbSet<Message> Messages { get; set; }
 		public DbSet<WebLink> WebLinks { get; set; }
+		public DbSet<Agenda> Agendas { get; set; }
 	}
 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using static Shawpnojatra_Foundation.Models.EnumClasses;
 
 namespace Shawpnojatra_Foundation.View_Model
 {
@@ -11,7 +12,12 @@ namespace Shawpnojatra_Foundation.View_Model
 		public string Image { get; set; }
 		public string ContactPerson { get; set; }
 		public string ContactNumber { get; set; }
+		public string TypeString { get; set; }
 		public int? TypeID { get; set; }
+	
+		
+
+
 		public int ID { get; set; }
 		public int UserID { get; set; }
 

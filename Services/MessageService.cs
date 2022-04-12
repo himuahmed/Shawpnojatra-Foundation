@@ -64,9 +64,32 @@ namespace Shawpnojatra_Foundation.Services
 					ContactPerson = v.ContactPerson != null ? v.ContactPerson : "Unknown",
 					Text = v.Text,
 					CDstring = v.CD.ToString("dd-MM-yyyy hh:mm:ss"),
+					TypeID=v.TypeID,
+					
 				};
 				vData.Add(d);
 			}
+			foreach(var data in vData)
+			{
+				if (data.TypeID == 1)
+				{
+					data.TypeString = "জরুরি খাদ্য সহয়তা";
+				}
+				else if (data.TypeID == 2)
+				{
+					data.TypeString = "ফ্রি বইয়ের আবেদন";
+				}
+
+				else if (data.TypeID == 3)
+				{
+					data.TypeString = "জরুরি চিকিৎসা খরচের আবেদন";
+				}
+				else if (data.TypeID == 4)
+				{
+					data.TypeString = "সমস্যা নিরসনের আবেদন";
+				}
+			}
+			
 			return vData;
 		}
 

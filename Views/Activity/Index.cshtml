@@ -394,6 +394,17 @@
 					</div>
 				</div>
 				<div class="form-row mt-10">
+					<div class="col-md-3 row">
+						<label class="label-bold-white" for="typeID">Agenda <span style="font-size:10px;margin-bottom:5px"></span></label>
+						<select name="type" id="type" class="form-control">
+							<option value="1">জরুরি খাদ্য সহয়তা</option>
+							<option value="2">ফ্রি বইয়ের আবেদন</option>
+							<option value="3">জরুরি চিকিৎসা খরচের আবেদন</option>
+							<option value="4">সমস্যা নিরসনের আবেদন</option>
+						</select>
+					</div>
+				</div>
+				<div class="form-row mt-10">
 					<div class="col-md-9 row">
 						<label class="label-bold-white" for="message">Message <span style="color:red">*</span> </label>
 						<textarea type="text" class="form-control" id="message" name="message" rows="10" required></textarea>
@@ -411,11 +422,18 @@
 
 			<div class="about-section">
 				<h1>About Us </h1>
-				<p>Some text about who we are and what we do.</p>
-				<p>Resize the browser window to see that this page is responsive by the way.</p>
+				<p>
+					ফেনী জেলার দাগনভূঞা উপজেলার রাজাপুর ইউনিয়নটি অত্যন্ত গুরুত্বপূর্ণ হলেও এখানকার অধিবাসীরা অনেক ক্ষেত্রেই তাদের নাগরিক সেবা থেকে বঞ্চিত। বিভিন্ন ক্ষেত্রে তাদের জনদুর্ভোগ-দুর্দশায় আমরা ভারাক্রান্ত হয়েছি।
+					মাদক ও নিরক্ষরতা মুক্ত সমাজ গঠনের স্বপ্ন আমরা সবসময় লালন করেছি। এ সমাজে দারিদ্র্যের কারণে অভুক্ত থাকবে  না একটি মানুষও। অর্থের অভাবে আটকে যাবে না কোনো বিয়ে। নিরাপদ পানীয় জলের অভাববোধ করবে না কোনো তৃষ্ণার্ত মানুষ। শুধু অর্থের অভাবে শিক্ষা থেকে বঞ্চিত হবে না একটি শিশুও। মাদককে রুখতে ক্রীড়ামোদী সমাজ গড়ে উঠবে।
+
+					উপরের এই প্রত্যেকটি বাক্য আমাদের একেকটা পরম স্বপ্ন৷ এই স্বপ্ন পূরণের লক্ষ্যে আপনাদেরকে সাথে নিয়ে শুরু করতে চাই এক নতুন যাত্রা। আমাদের এই স্বপ্ন যাত্রায় সমাজ হবে আলোকিত,দূরীভূত হবে ক্ষুধা, নিরক্ষরতা নামক সকল আঁধার।
+
+					আমাদের স্বপ্নের স্বপ্নযাত্রায় পাথেয় এই স্বপ্নযাত্রা ফাউন্ডেশন। সবার সহযোগিতায় আমাদের পথচলা হবে মসৃণ ইনশাআল্লাহ।
+				</p>
+				@*<p>Resize the browser window to see that this page is responsive by the way.</p>*@
 			</div>
 
-			<h2 style="text-align:center">Our Team</h2>
+			@*<h2 style="text-align:center">Our Team</h2>
 			<div class="row">
 				<div class="column">
 					<div class="card">
@@ -455,7 +473,7 @@
 						</div>
 					</div>
 				</div>
-			</div>
+			</div>*@
 
 		</div>
 	</section>
@@ -500,6 +518,7 @@
 		message.append("Text", $("#message").val());
 		message.append("ContactPerson", $("#personName").val());
 		message.append("ContactNumber", $("#contact").val());
+		message.append("TypeID", $("#type").val());
 		$.ajax({
 			url: 'api/Activity/AddMessage',
 			method: 'post',
